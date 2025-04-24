@@ -34,6 +34,17 @@ jobs:
           assertions: assertions.json
           metrics: eval_results.json
           results: test_results.xml
+  playwright-test:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.15.0-focal
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run Playwright tests
+          command: npx playwright test
 workflows:
   example:
     jobs:
@@ -50,5 +61,8 @@ workflows:
   test-eval-workflow:
     jobs:
       - evals-test-assertions-job
+  playwright-workflow:
+    jobs:
+      - playwright-test
 orbs:
   evals: circleci/evals@2.0
