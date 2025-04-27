@@ -46,7 +46,7 @@ jobs:
           name: Run Playwright tests
           command: |
             # Ensure the correct Node.js version is used
-            npx playwright test
+            npx playwright test --reporter=dot
 workflows:
   example:
     jobs:
