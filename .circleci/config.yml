@@ -44,7 +44,9 @@ jobs:
           command: npm install
       - run:
           name: Run Playwright tests
-          command: npx playwright test
+          command: |
+            # Ensure the correct Node.js version is used
+            npx playwright test
 workflows:
   example:
     jobs:
